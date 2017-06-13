@@ -1,0 +1,22 @@
+Compiling the microbenchmarks
+-----------------------------
+Edit the scripts/compile.sh to reflect the paths to the new and old glibc
+installations.
+
+For compiling the sinf microbenchmark run, from the top directory,
+./scripts/compile.sh sinf/sinf_benchmark.c
+
+For compiling the sinf microbenchmark run, from the top directory,
+./scripts/compile.sh cosf/cosf_benchmark.c
+
+This will create the benchmark binaries new.out and old.out in bin directory.
+
+Notes
+-----
+The benchmark code uses the PMU cycle counter to calculate the cpu cycles. You
+need to enable access to this counter from userspace. Otherwise the benchmark
+will signal an Illegal Instruction.
+
+Follow section "38.2.2. High-resolution cycle counter" in the DPDK guide at
+http://dpdk.org/doc/guides/prog_guide/profile_app.html to enable the access to
+PMU cycle counter from userspace.
